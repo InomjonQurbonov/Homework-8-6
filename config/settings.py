@@ -51,7 +51,9 @@ THIRD_PARTY_APPS = [
 ]
 
 MY_APPS = [
-    'app_news'
+    'app_news',
+    'app_leadership',
+    'app_standards',
 ]
 
 INSTALLED_APPS = DJANGO_DEFAULT_APPS + THIRD_PARTY_APPS + MY_APPS

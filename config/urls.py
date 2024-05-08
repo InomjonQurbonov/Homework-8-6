@@ -37,5 +37,7 @@ urlpatterns = [
     # login
     path('user/api/auth/', include('djoser.urls')),
     # my_apps
-    path('news/',include('app_news.urls'))
+    path('news/', include('app_news.urls')),
+    path('leadership/', include('app_leadership.urls')),
+    path('standards/', include('app_standards.urls')),
 ]
