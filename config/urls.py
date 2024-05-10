@@ -34,10 +34,10 @@ urlpatterns = [
     # token
     path('token/api', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/api', TokenRefreshView.as_view(), name='token_refresh'),
-    # login
-    path('user/api/auth/', include('djoser.urls')),
     # my_apps
     path('news/', include('app_news.urls')),
     path('leadership/', include('app_leadership.urls')),
     path('standards/', include('app_standards.urls')),
+    path('user/', include('user.urls')),
+    path('regulations/', include('regulations.urls')),
 ]

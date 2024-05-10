@@ -45,6 +45,7 @@ DJANGO_DEFAULT_APPS = [
 
 THIRD_PARTY_APPS = [
     'rest_framework',
+    'django_filters',
     'drf_yasg',
     'rest_framework_simplejwt',
     'djoser',
@@ -54,6 +55,8 @@ MY_APPS = [
     'app_news',
     'app_leadership',
     'app_standards',
+    'user',
+    'regulations',
 ]
 
 INSTALLED_APPS = DJANGO_DEFAULT_APPS + THIRD_PARTY_APPS + MY_APPS
@@ -140,18 +143,21 @@ else:
     STATICFILES_DIRS = [
         BASE_DIR / 'static',
         BASE_DIR / 'media'
-]
-
+    ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
     ),
 }
 
