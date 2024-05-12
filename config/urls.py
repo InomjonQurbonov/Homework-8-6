@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-
+from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -10,19 +10,21 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
+from config import settings
+
 ...
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="TMSITI WEB SITE",
-      default_version='v1',
-      description="TMSITI WEB SITE in Swagger",
-      terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="inomjonqurbonnov916@gmail.com"),
-      license=openapi.License(name="BSD License"),
-   ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
+    openapi.Info(
+        title="TMSITI WEB SITE",
+        default_version='v1',
+        description="TMSITI WEB SITE in Swagger",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="inomjonqurbonnov916@gmail.com"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
 )
 
 urlpatterns = [
@@ -40,4 +42,9 @@ urlpatterns = [
     path('standards/', include('app_standards.urls')),
     path('user/', include('user.urls')),
     path('regulations/', include('regulations.urls')),
+    path('dictionary/', include('app_dictionary.urls')),
+    path('shnk/', include('shnk_app.urls'))
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

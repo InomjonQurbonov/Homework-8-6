@@ -9,7 +9,6 @@ from app_leadership.permissions import IsAdminOrReadOnly
 
 class LeadershipViewSet(viewsets.ModelViewSet):
     queryset = Leadership.objects.all()
-    serializer_class = LeadershipSerializer
     permission_classes = [IsAdminOrReadOnly]
 
     def get_serializer_class(self):
@@ -20,7 +19,6 @@ class LeadershipViewSet(viewsets.ModelViewSet):
 
 class DepartmentViewSet(viewsets.ModelViewSet):
     queryset = StructuralUnits.objects.all()
-    serializer_class = StructuralUnitsSerializer
     permission_classes = [IsAdminOrReadOnly]
 
     def get_serializer_class(self):
